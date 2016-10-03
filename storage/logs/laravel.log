@@ -5467,3 +5467,73 @@ Stack trace:
 #16 /vagrant/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #17 /vagrant/artisan(35): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #18 {main}  
+[2016-10-03 15:40:00] local.ERROR: Symfony\Component\Console\Exception\CommandNotFoundException: There are no commands defined in the "migration" namespace.
+
+Did you mean this?
+    migrate in /vagrant/vendor/symfony/console/Application.php:466
+Stack trace:
+#0 /vagrant/vendor/symfony/console/Application.php(498): Symfony\Component\Console\Application->findNamespace('migration')
+#1 /vagrant/vendor/symfony/console/Application.php(183): Symfony\Component\Console\Application->find('migration:rollb...')
+#2 /vagrant/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#3 /vagrant/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#4 /vagrant/artisan(35): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#5 {main}  
+[2016-10-03 15:40:22] local.ERROR: Symfony\Component\Console\Exception\CommandNotFoundException: There are no commands defined in the "migration" namespace.
+
+Did you mean this?
+    migrate in /vagrant/vendor/symfony/console/Application.php:466
+Stack trace:
+#0 /vagrant/vendor/symfony/console/Application.php(498): Symfony\Component\Console\Application->findNamespace('migration')
+#1 /vagrant/vendor/symfony/console/Application.php(183): Symfony\Component\Console\Application->find('migration:rollb...')
+#2 /vagrant/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#3 /vagrant/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#4 /vagrant/artisan(35): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#5 {main}  
+[2016-10-03 15:40:36] local.ERROR: Symfony\Component\Debug\Exception\FatalThrowableError: Fatal error: Class 'CreateTableQuestions' not found in /vagrant/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php:336
+Stack trace:
+#0 /vagrant/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(227): Illuminate\Database\Migrations\Migrator->resolve('create_table_qu...')
+#1 /vagrant/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(181): Illuminate\Database\Migrations\Migrator->runDown(Object(stdClass), false)
+#2 /vagrant/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/RollbackCommand.php(63): Illuminate\Database\Migrations\Migrator->rollback(false)
+#3 [internal function]: Illuminate\Database\Console\Migrations\RollbackCommand->fire()
+#4 /vagrant/vendor/laravel/framework/src/Illuminate/Container/Container.php(507): call_user_func_array(Array, Array)
+#5 /vagrant/vendor/laravel/framework/src/Illuminate/Console/Command.php(169): Illuminate\Container\Container->call(Array)
+#6 /vagrant/vendor/symfony/console/Command/Command.php(256): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#7 /vagrant/vendor/laravel/framework/src/Illuminate/Console/Command.php(155): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#8 /vagrant/vendor/symfony/console/Application.php(791): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#9 /vagrant/vendor/symfony/console/Application.php(186): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Migrations\RollbackCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#10 /vagrant/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#11 /vagrant/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#12 /vagrant/artisan(35): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#13 {main}  
+[2016-10-03 15:41:08] local.ERROR: Symfony\Component\Debug\Exception\FatalThrowableError: Fatal error: Class 'CreateTableQuestions' not found in /vagrant/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php:336
+Stack trace:
+#0 /vagrant/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(227): Illuminate\Database\Migrations\Migrator->resolve('create_table_qu...')
+#1 /vagrant/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(181): Illuminate\Database\Migrations\Migrator->runDown(Object(stdClass), false)
+#2 /vagrant/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/RollbackCommand.php(63): Illuminate\Database\Migrations\Migrator->rollback(false)
+#3 [internal function]: Illuminate\Database\Console\Migrations\RollbackCommand->fire()
+#4 /vagrant/vendor/laravel/framework/src/Illuminate/Container/Container.php(507): call_user_func_array(Array, Array)
+#5 /vagrant/vendor/laravel/framework/src/Illuminate/Console/Command.php(169): Illuminate\Container\Container->call(Array)
+#6 /vagrant/vendor/symfony/console/Command/Command.php(256): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#7 /vagrant/vendor/laravel/framework/src/Illuminate/Console/Command.php(155): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#8 /vagrant/vendor/symfony/console/Application.php(791): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#9 /vagrant/vendor/symfony/console/Application.php(186): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Migrations\RollbackCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#10 /vagrant/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#11 /vagrant/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#12 /vagrant/artisan(35): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#13 {main}  
+[2016-10-03 15:41:22] local.ERROR: Symfony\Component\Debug\Exception\FatalThrowableError: Fatal error: Class 'CreateTableQuestions' not found in /vagrant/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php:336
+Stack trace:
+#0 /vagrant/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(227): Illuminate\Database\Migrations\Migrator->resolve('create_table_qu...')
+#1 /vagrant/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(181): Illuminate\Database\Migrations\Migrator->runDown(Object(stdClass), false)
+#2 /vagrant/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/RollbackCommand.php(63): Illuminate\Database\Migrations\Migrator->rollback(false)
+#3 [internal function]: Illuminate\Database\Console\Migrations\RollbackCommand->fire()
+#4 /vagrant/vendor/laravel/framework/src/Illuminate/Container/Container.php(507): call_user_func_array(Array, Array)
+#5 /vagrant/vendor/laravel/framework/src/Illuminate/Console/Command.php(169): Illuminate\Container\Container->call(Array)
+#6 /vagrant/vendor/symfony/console/Command/Command.php(256): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#7 /vagrant/vendor/laravel/framework/src/Illuminate/Console/Command.php(155): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#8 /vagrant/vendor/symfony/console/Application.php(791): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#9 /vagrant/vendor/symfony/console/Application.php(186): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Migrations\RollbackCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#10 /vagrant/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#11 /vagrant/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#12 /vagrant/artisan(35): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#13 {main}  
