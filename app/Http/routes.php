@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::any('api', function () {
+    return ['version' => 0.1];
+});
+Route::any('api/user', function () {
+    $user = new App\User();
+    return $user->signup();
+});
