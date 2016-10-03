@@ -54,3 +54,6 @@ Route::any('api/logout', function () {
 Route::any('api/question/add', function () {
     return get_question_instance()->add();
 });
+Route::any('api/question/change', function () {
+    return get_question_instance()->change();
+});
