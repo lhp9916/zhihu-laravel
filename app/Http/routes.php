@@ -19,6 +19,10 @@ function get_user_instance()
 Route::get('/', function () {
     return view('welcome');
 });
+//测试入口
+Route::any('test', function () {
+//    dd(get_user_instance()->is_logged_in());
+});
 
 Route::any('api', function () {
     return ['version' => 0.1];
