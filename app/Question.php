@@ -76,4 +76,28 @@ class Question extends Model
             ->keyBy('id');//以id为key
         return ['status' => 1, 'data' => $res];
     }
+
+    public function remove()
+    {
+        if (!get_user_instance()->is_logged_in()) {
+            return ['status' => 0, 'msg' => '请先登录'];
+        }
+        $id = rq('id');
+        if (!$id) {
+            return ['status' => 0, 'msg' => 'id不能为空'];
+        }
+        $question = $this->find($id);//返回主键所在行
+        if (!$question) {
+            return ['status' => 0, 'msg' => '问题不存在'];
+        }
+        //所有者才能删除
+        if ($question->user_id != session('user_id')) {
+            return ['status' => 0, 'msg' => '您没有权限修改'];
+        }
+        if ($question->delete()) {
+            return ['status' => 1, 'msg' => '删除成功'];
+        }
+        return ['status' => 0, 'msg' => '删除失败'];
+
+    }
 }
