@@ -57,4 +57,18 @@ class User extends Model
 //        dd(session()->all());
         return ['status' => 1, 'id' => $user->id];
     }
+
+    public function logout()
+    {
+//        session()->flush();//清空session所有内容
+        session()->forget('username');
+        session()->forget('user_id');
+//        dd(session()->all());
+        return ['status' => 1, 'msg' => '登出成功'];
+    }
+
+    public function is_logged_in()
+    {
+        return session('user_id') ?: false;
+    }
 }

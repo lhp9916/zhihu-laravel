@@ -29,3 +29,6 @@ Route::any('api/signup', function () {
 Route::any('api/login', function () {
     return get_user_instance()->login();
 });
+Route::any('api/logout', function () {
+    return get_user_instance()->logout();
+});
