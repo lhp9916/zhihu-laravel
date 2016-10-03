@@ -32,4 +32,29 @@ class User extends Model
         }
 
     }
+
+    public function login()
+    {
+        $username = \Request::get('username');
+        $password = \Request::get('password');
+        if (!$username) {
+            return ['status' => 0, 'msg' => '用户名不可为空'];
+        }
+        if (!$password) {
+            return ['status' => 0, 'msg' => '密码不可为空'];
+        }
+        $user = $this->where('username', $username)->first();
+        if (!$user) {
+            return ['status' => 0, 'msg' => '用户不存在'];
+        }
+        $hashed_password = $user->password;
+        if (!\Hash::check($password, $hashed_password)) {
+            return ['status' => 0, 'msg' => '密码错误'];
+        }
+        //登录成功，保存至session
+        session()->put('username', $user->username);
+        session()->put('user_id', $user->id);
+//        dd(session()->all());
+        return ['status' => 1, 'id' => $user->id];
+    }
 }
