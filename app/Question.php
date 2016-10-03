@@ -53,4 +53,27 @@ class Question extends Model
         }
         return ['status' => 0, 'msg' => '更新失败'];
     }
+
+    public function read()
+    {
+        $id = rq('id');
+        if ($id) {
+            $question = $this->find($id);
+            if (!$question) {
+                return ['status' => 0, 'msg' => '问题不存在'];
+            }
+            return ['status' => 1, 'data' => $question];
+        }
+        //批量读取
+        $limit = rq('limit') ?: 15;
+        $skip = (rq('page') ?: 1) - 1;
+        $skip = $skip * $limit;
+        $res = $this
+            ->orderBy('created_at')
+            ->limit($limit)
+            ->skip($skip)
+            ->get(['id', 'title', 'user_id', 'created_at', 'updated_at'])
+            ->keyBy('id');//以id为key
+        return ['status' => 1, 'data' => $res];
+    }
 }
