@@ -31,6 +31,11 @@ function get_question_instance()
     return new App\Question();
 }
 
+function get_answer_instance()
+{
+    return new App\Answer();
+}
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -62,4 +67,8 @@ Route::any('api/question/read', function () {
 });
 Route::any('api/question/remove', function () {
     return get_question_instance()->remove();
+});
+
+Route::any('api/answer/add', function () {
+    return get_answer_instance()->add();
 });
