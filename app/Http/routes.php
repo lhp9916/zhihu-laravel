@@ -36,6 +36,11 @@ function get_answer_instance()
     return new App\Answer();
 }
 
+function get_comment_instance()
+{
+    return new App\Comment();
+}
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -81,4 +86,9 @@ Route::any('api/answer/change', function () {
 });
 Route::any('api/answer/read', function () {
     return get_answer_instance()->read();
+});
+
+//--------------评论API---------------------------------------
+Route::any('api/comment/add', function () {
+    return get_comment_instance()->add();
 });
