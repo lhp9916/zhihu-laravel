@@ -86,6 +86,9 @@ Route::any('api/logout', function () {
 Route::any('api/user/change_password', function () {
     return get_user_instance()->change_password();
 });
+Route::any('api/user/reset_password', function () {
+    return get_user_instance()->reset_password();
+});
 
 //--------------问题API-------------------------------
 Route::any('api/question/add', function () {

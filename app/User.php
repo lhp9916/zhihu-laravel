@@ -99,4 +99,38 @@ class User extends Model
         }
         return error('数据库操作失败');
     }
+
+    //重置密码
+    public function reset_password()
+    {
+        $phone = rq('phone');
+        if (!$phone) {
+            return error('手机号不能为空');
+        }
+        $user = $this->where('phone', $phone)->first();
+        if (!$user) {
+            return error('手机号不存在');
+        }
+
+        //模拟发送短信
+        $captcha = $this->generate_captcha();
+        $user->phone_captcha = $captcha;
+        if (!$user->save()) {
+            return error('数据库操作失败');
+        }
+        $this->send_sms();
+        return success(['msg' => '短信发送成功']);
+    }
+
+    //随机生成验证码
+    public function generate_captcha()
+    {
+        return rand(1000, 9999);
+    }
+
+    //模拟发送短信  具体的方式根据业务来写
+    public function send_sms()
+    {
+        return true;
+    }
 }
