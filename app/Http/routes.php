@@ -11,6 +11,13 @@
 |
 */
 
+function pagenate($page = 1, $limit = 16)
+{
+    $limit = $limit ?: 16;
+    $skip = ($page ? $page - 1 : 0) * $limit;
+    return [$limit, $skip];
+}
+
 //简化Request取值
 function rq($key = null, $default = null)
 {
@@ -101,3 +108,5 @@ Route::any('api/comment/read', function () {
 Route::any('api/comment/remove', function () {
     return get_comment_instance()->remove();
 });
+
+Route::any('api/timeline', 'CommonController@timeline');

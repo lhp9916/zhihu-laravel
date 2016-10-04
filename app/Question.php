@@ -65,9 +65,7 @@ class Question extends Model
             return ['status' => 1, 'data' => $question];
         }
         //批量读取
-        $limit = rq('limit') ?: 15;
-        $skip = (rq('page') ?: 1) - 1;
-        $skip = $skip * $limit;
+        list($limit, $skip) = pagenate(rq('page'), rq('limit'));
         $res = $this
             ->orderBy('created_at')
             ->limit($limit)
