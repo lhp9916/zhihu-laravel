@@ -86,4 +86,41 @@ class Answer extends Model
             ->keyBy('id');
         return ['status' => 1, 'data' => $answer];
     }
+
+    //投票
+    public function vote()
+    {
+        if (!get_user_instance()->is_logged_in()) {
+            return ['status' => 0, 'msg' => '请先登录'];
+        }
+        $id = rq('id');
+        if (!$id || !rq('vote')) {
+            return ['status' => 0, 'msg' => 'id vote 都不能为空'];
+        }
+        $answer = $this->find($id);
+        if (!$answer) {
+            return ['status' => 0, 'msg' => '问题不存在'];
+        }
+        $vote = rq('vote') <= 1 ? 1 : 2; //1-赞同 2-反对
+
+        //检查此用户是否在相同的问题下投过票
+        $vote_ins = $answer
+            ->users()
+            ->newPivotStatement()
+            ->where('user_id', session('user_id'))
+            ->where('answer_id', $id)
+            ->delete();
+
+        $answer->users()->attach(session('user_id'), ['vote' => $vote]);
+        return ['status' => 1];
+
+    }
+
+    public function users()
+    {
+        return $this
+            ->belongsToMany('App\User')
+            ->withPivot('vote')
+            ->withTimestamps();
+    }
 }

@@ -87,6 +87,9 @@ Route::any('api/answer/change', function () {
 Route::any('api/answer/read', function () {
     return get_answer_instance()->read();
 });
+Route::any('api/answer/vote', function () {
+    return get_answer_instance()->vote();
+});
 
 //--------------评论API---------------------------------------
 Route::any('api/comment/add', function () {

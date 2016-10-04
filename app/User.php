@@ -71,4 +71,12 @@ class User extends Model
     {
         return session('user_id') ?: false;
     }
+
+    public function answer()
+    {
+        return $this
+            ->belongsToMany('App\Answer')
+            ->withPivot('vote')
+            ->withTimestamps();
+    }
 }
