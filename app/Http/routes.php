@@ -18,6 +18,20 @@ function pagenate($page = 1, $limit = 16)
     return [$limit, $skip];
 }
 
+function error($msg = null)
+{
+    return ['status' => 0, 'msg' => $msg];
+}
+
+function success($data_to_merge = null)
+{
+    $data = ['status' => 1];
+    if ($data_to_merge) {
+        $data = array_merge($data, $data_to_merge);
+    }
+    return $data;
+}
+
 //简化Request取值
 function rq($key = null, $default = null)
 {
@@ -69,11 +83,14 @@ Route::any('api/login', function () {
 Route::any('api/logout', function () {
     return get_user_instance()->logout();
 });
-Route::any('api/question/add', function () {
-    return get_question_instance()->add();
+Route::any('api/user/change_password', function () {
+    return get_user_instance()->change_password();
 });
 
 //--------------问题API-------------------------------
+Route::any('api/question/add', function () {
+    return get_question_instance()->add();
+});
 Route::any('api/question/change', function () {
     return get_question_instance()->change();
 });
@@ -109,4 +126,5 @@ Route::any('api/comment/remove', function () {
     return get_comment_instance()->remove();
 });
 
+//时间线API
 Route::any('api/timeline', 'CommonController@timeline');

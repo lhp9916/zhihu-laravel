@@ -79,4 +79,24 @@ class User extends Model
             ->withPivot('vote')
             ->withTimestamps();
     }
+
+    public function change_password()
+    {
+        if (!$this->is_logged_in()) {
+            return error('请先登录');
+        }
+        if (!rq('old_password') || !rq('new_password')) {
+            return error('old_password new_password 缺一不可');
+        }
+        $user = $this->find(session('user_id'));
+        if (!\Hash::check(rq('old_password'), $user->password)) {
+            return error('原始密码错误');
+        }
+
+        $user->password = bcrypt(rq('new_password'));
+        if ($user->save()) {
+            return success(['msg' => '保存成功']);
+        }
+        return error('数据库操作失败');
+    }
 }
