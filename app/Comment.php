@@ -82,4 +82,29 @@ class Comment extends Model
         }
         return ['status' => 1, 'data' => $data];
     }
+
+    public function remove()
+    {
+        if (!get_user_instance()->is_logged_in()) {
+            return ['status' => 0, 'msg' => '请先登录'];
+        }
+        $id = rq('id');
+        if (!$id) {
+            return ['status' => 0, 'id' => 'id不能为空'];
+        }
+        $comment = $this->find($id);
+        if (!$comment) {
+            return ['status' => 0, 'msg' => '评论不存在'];
+        }
+        if ($comment->user_id != session('user_id')) {
+            return ['status' => 0, 'msg' => '权限错误'];
+        }
+        //先删除此评论下的所有回复，再删除评论
+        $this->where('replay_to', $comment->id)->delete();
+
+        if ($comment->delete()) {
+            return ['status' => 1, 'msg' => '删除成功'];
+        }
+        return ['status' => 0, 'msg' => '数据库写入失败'];
+    }
 }

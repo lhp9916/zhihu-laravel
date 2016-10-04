@@ -95,3 +95,6 @@ Route::any('api/comment/add', function () {
 Route::any('api/comment/read', function () {
     return get_comment_instance()->read();
 });
+Route::any('api/comment/remove', function () {
+    return get_comment_instance()->remove();
+});
