@@ -79,3 +79,6 @@ Route::any('api/answer/add', function () {
 Route::any('api/answer/change', function () {
     return get_answer_instance()->change();
 });
+Route::any('api/answer/read', function () {
+    return get_answer_instance()->read();
+});

@@ -57,4 +57,33 @@ class Answer extends Model
         }
         return ['status' => 0, 'msg' => '数据库插入失败'];
     }
+
+    public function read()
+    {
+        $id = rq('id');
+        $question_id = rq('question_id');
+        if (!$id && !$question_id) {
+            return ['status' => 0, 'msg' => 'id或者question_id不能为空'];
+        }
+        if ($id) {
+            //查看某个回答
+            $answer = $this->find($id);
+            if (!$answer) {
+                return ['status' => 0, 'msg' => '回答不存在'];
+            }
+            return ['status' => 1, 'data' => $answer];
+        }
+
+        //查找问题前，查看问题是否存在
+        if (!get_question_instance()->find($question_id)) {
+            return ['status' => 0, 'msg' => '问题不存在'];
+        }
+
+        //查看所有回答
+        $answer = $this
+            ->where('question_id', $question_id)
+            ->get()
+            ->keyBy('id');
+        return ['status' => 1, 'data' => $answer];
+    }
 }
