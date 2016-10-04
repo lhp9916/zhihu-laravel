@@ -92,3 +92,6 @@ Route::any('api/answer/read', function () {
 Route::any('api/comment/add', function () {
     return get_comment_instance()->add();
 });
+Route::any('api/comment/read', function () {
+    return get_comment_instance()->read();
+});

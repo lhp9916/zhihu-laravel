@@ -59,4 +59,27 @@ class Comment extends Model
         }
         return ['status' => 0, 'msg' => '保存失败'];
     }
+
+    public function read()
+    {
+        $question_id = rq('question_id');
+        $answer_id = rq('answer_id');
+        if (!$question_id && !$answer_id) {
+            return ['status' => 0, 'msg' => 'answer_id或者question_id不能为空'];
+        }
+        if ($question_id) {
+            $question = get_question_instance()->find($question_id);
+            if (!$question) {
+                return ['status' => 0, 'msg' => '问题不存在'];
+            }
+            $data = $this->where('question_id', $question_id)->get()->keyBy('id');
+        } else {
+            $answer = get_answer_instance()->find($answer_id);
+            if (!$answer) {
+                return ['status' => 0, 'msg' => '回答不存在'];
+            }
+            $data = $this->where('answer_id', $answer_id)->get()->keyBy('id');
+        }
+        return ['status' => 1, 'data' => $data];
+    }
 }
