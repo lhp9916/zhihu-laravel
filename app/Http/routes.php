@@ -47,6 +47,7 @@ Route::any('test', function () {
 Route::any('api', function () {
     return ['version' => 0.1];
 });
+//--------------用户API-------------------------------
 Route::any('api/signup', function () {
     return get_user_instance()->signup();
 });
@@ -59,6 +60,8 @@ Route::any('api/logout', function () {
 Route::any('api/question/add', function () {
     return get_question_instance()->add();
 });
+
+//--------------问题API-------------------------------
 Route::any('api/question/change', function () {
     return get_question_instance()->change();
 });
@@ -69,6 +72,10 @@ Route::any('api/question/remove', function () {
     return get_question_instance()->remove();
 });
 
+//--------------回答API-------------------------------
 Route::any('api/answer/add', function () {
     return get_answer_instance()->add();
+});
+Route::any('api/answer/change', function () {
+    return get_answer_instance()->change();
 });
