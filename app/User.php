@@ -100,16 +100,20 @@ class User extends Model
         return error('数据库操作失败');
     }
 
-    //重置密码
+    //找回密码
     public function reset_password()
     {
+        if ($this->is_robot()) {
+            return error('操作过于频繁，请稍后再试');
+        }
+
         $phone = rq('phone');
         if (!$phone) {
             return error('手机号不能为空');
         }
         $user = $this->where('phone', $phone)->first();
         if (!$user) {
-            return error('手机号不存在');
+            return error('用户不存在');
         }
 
         //模拟发送短信
@@ -119,6 +123,7 @@ class User extends Model
             return error('数据库操作失败');
         }
         $this->send_sms();
+        session()->set('last_sms_time', time());
         return success(['msg' => '短信发送成功']);
     }
 
@@ -126,6 +131,52 @@ class User extends Model
     public function generate_captcha()
     {
         return rand(1000, 9999);
+    }
+
+    //验证找回密码
+    public function validate_reset_password()
+    {
+        if ($this->is_robot(2)) {
+            return error('操作过于频繁，请稍后再试');
+        }
+
+        $phone = rq('phone');
+        $phone_captcha = rq('phone_captcha');
+        $new_password = rq('new_password');
+        if (!$phone || !$phone_captcha || !$new_password) {
+            return error('phone phone_captcha new_password 都不能为空');
+        }
+        $user = $this->where([
+            'phone' => $phone,
+            'phone_captcha' => $phone_captcha,
+        ])->first();
+        if (!$user) {
+            return error('验证码不正确');
+        }
+        $user->password = bcrypt($new_password);
+        if (!$user->save()) {
+            return error('数据库写入失败');
+        }
+        session()->set('last_sms_time', time());
+        return success(['msg' => '更改密码成功']);
+
+//        简化写法
+//        return $user->save() ? success() : error('数据库写入失败');
+    }
+
+    //判断是否为机器人
+    public function is_robot($time = 10)
+    {
+        //session没有last_sms_time,接口没有被调用
+        if (!session('last_sms_time')) {
+            return false;
+        }
+        $current_time = time();
+        $last_sms_time = session('last_sms_time');
+        if ($current_time - $last_sms_time > $time) {
+            return false;
+        }
+        return true;
     }
 
     //模拟发送短信  具体的方式根据业务来写
