@@ -33,6 +33,26 @@ class User extends Model
 
     }
 
+    //获取用户信息
+    public function read()
+    {
+        $id = rq('id');
+        if (!$id) {
+            return error('id不存在');
+        }
+        $get = ['username', 'avatar_url', 'intro'];
+        $user = $this->find($id, $get);
+        if (!$user) {
+            return error('用户不存在');
+        }
+        $data = $user->toArray();
+        $answer_count = get_answer_instance()->where('user_id', $id)->count();
+        $question_count = get_question_instance()->where('user_id', $id)->count();
+        $data['answer_count'] = $answer_count;
+        $data['question_count'] = $question_count;
+        return success($data);
+    }
+
     public function login()
     {
         $username = \Request::get('username');
@@ -76,6 +96,14 @@ class User extends Model
     {
         return $this
             ->belongsToMany('App\Answer')
+            ->withPivot('vote')
+            ->withTimestamps();
+    }
+
+    public function questions()
+    {
+        return $this
+            ->belongsToMany('App\Question')
             ->withPivot('vote')
             ->withTimestamps();
     }

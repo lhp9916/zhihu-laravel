@@ -23,11 +23,11 @@ function error($msg = null)
     return ['status' => 0, 'msg' => $msg];
 }
 
-function success($data_to_merge = null)
+function success($data_to_merge = [])
 {
-    $data = ['status' => 1];
+    $data = ['status' => 1, 'data' => []];
     if ($data_to_merge) {
-        $data = array_merge($data, $data_to_merge);
+        $data['data'] = array_merge($data['data'], $data_to_merge);
     }
     return $data;
 }
@@ -82,6 +82,9 @@ Route::any('api/login', function () {
 });
 Route::any('api/logout', function () {
     return get_user_instance()->logout();
+});
+Route::any('api/user/read', function () {
+    return get_user_instance()->read();
 });
 Route::any('api/user/change_password', function () {
     return get_user_instance()->change_password();
