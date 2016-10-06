@@ -63,7 +63,7 @@ function get_comment_instance()
 }
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 //测试入口
 Route::any('test', function () {
