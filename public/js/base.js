@@ -12,14 +12,20 @@
 
             $urlRouterProvider.otherwise('/home');
 
-            $stateProvider.state('home', {
-                url: '/home',
-                templateUrl: 'home.tpl' // host/home.tpl
-            })
-            $stateProvider.state('login', {
-                url: '/login',
-                //template: '<h1>登录</h1>',
-                templateUrl: 'login.tpl'
-            })
+            $stateProvider
+                .state('home', {
+                    url: '/home',
+                    templateUrl: 'home.tpl' // host/home.tpl
+                })
+                .state('login', {
+                    url: '/login',
+                    //template: '<h1>登录</h1>',
+                    templateUrl: 'login.tpl'
+                })
+                .state('signup', {
+                    url: '/signup',
+                    //template: '<h1>登录</h1>',
+                    templateUrl: 'signup.tpl'
+                })
         })
 })();

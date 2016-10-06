@@ -1,0 +1,45 @@
+* {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.clearfix:after,
+.clearfix:before {
+    content: " ";
+    clear: both;
+    display: table;
+}
+
+.navbar {
+    /*background: rgba(0,0,0,0.1);*/
+}
+
+.navbar-item {
+    line-height: 2;
+    padding: 2px 4px;
+    display: inline-block;
+}
+
+.navbar .brand {
+    font-size: 20px;
+    padding-top: 0;
+    line-height: 1;
+    font-weight: 600;
+}
+
+.container {
+    width: 632px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+[ui-sref] {
+    cursor: pointer;
+}
