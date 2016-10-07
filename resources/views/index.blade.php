@@ -60,12 +60,16 @@
                            ng-minlength="4"
                            maxlength="16"
                            required
+                           ng-model-options="{debounce:500}"
                            ng-model="User.signup_data.username"/>
 
                     <div class="input-error-set" ng-if="signup_form.username.$touched">
                         <div ng-if="signup_form.username.$error.required">用户名为必填项</div>
                         <div ng-if="signup_form.username.$error.minlength || signup_form.username.$error.maxlength">
                             用户名长度需在4至16位之间
+                        </div>
+                        <div ng-if="User.signup_username_exists">
+                            用户已存在
                         </div>
                     </div>
                 </div>
