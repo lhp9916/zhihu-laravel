@@ -47,6 +47,10 @@ function get_user_instance()
     return new App\User();
 }
 
+function is_logged_in()
+{
+    return session('user_id') ?: false;
+}
 function get_question_instance()
 {
     return new App\Question();
@@ -97,6 +101,9 @@ Route::any('api/user/validate_reset_password', function () {
 });
 Route::any('api/user/exists', function () {
     return get_user_instance()->exists();
+});
+Route::any('api/user/is_logged_in', function () {
+    return get_user_instance()->is_logged_in();
 });
 
 //--------------问题API-------------------------------

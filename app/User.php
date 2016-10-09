@@ -89,7 +89,7 @@ class User extends Model
 
     public function is_logged_in()
     {
-        return session('user_id') ?: false;
+        return is_logged_in();
     }
 
     public function answer()

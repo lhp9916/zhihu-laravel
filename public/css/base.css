@@ -17,6 +17,7 @@ h1 {
 a {
     text-decoration: none;
 }
+
 .fl {
     float: left;
 }
@@ -41,6 +42,10 @@ a {
     color: #f3d3d3;
 }
 
+.navbar form {
+    display: inline-block;
+}
+
 .navbar-item {
     line-height: 2;
     padding: 2px 4px;
@@ -62,10 +67,12 @@ a {
 
 .container.signup,
 .container.login,
+.container.question-add,
 .container.reset-password {
     width: 400px;
     margin-top: 15px;
 }
+
 [ui-sref] {
     cursor: pointer;
 }
@@ -91,7 +98,7 @@ label {
     box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.1);
 }
 
-input {
+input, textarea {
     display: block;
     width: 100%;
     padding: 5px;
@@ -123,6 +130,16 @@ button[disabled] {
     background: #EEEEEE;
     color: #aaaaaa;
 }
+
 input, button {
     padding: 5px;
+}
+
+#quick_ask button {
+    background: #a10;
+    color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
