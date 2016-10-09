@@ -42,20 +42,42 @@
 </script>
 
 <script type="text/ng-template" id="login.tpl">
-    <div class="login container">
-        <h1>登录</h1>
-        近一个月因为忙于其他事情，一直没能抽出时间来更新项目进度。现在，只能趁着国庆期间，赶紧抽空更新下进度。这次，我想简单谈谈服务端的一些东西。
-        之前，我
+    <div class="login container" ng-controller="LoginController">
+        <div class="card">
+            <h1>登录</h1>
+
+            <form name="login_form" ng-submit="User.login()">
+                <div class="input-group">
+                    <label>用户名</label>
+                    <input name="username" type="text" ng-model="User.login_data.username" required>
+                </div>
+                <div class="input-group">
+                    <label>密码</label>
+                    <input name="password" type="password" ng-model="User.login_data.password" required>
+                </div>
+                <div ng-if="User.login_failed" class="input-error-set">
+                    用户名或密码有误
+                </div>
+                <div class="input-group">
+                    <button type="submit" class="primary"
+                            ng-disabled="login_form.username.$error.required ||
+                            login_form.password.$error.required
+                            ">
+                        登录
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
 </script>
 <script type="text/ng-template" id="signup.tpl">
     <div class="signup container" ng-controller="SignupController">
         <div class="card">
             <h1>注册</h1>
-            [: User.signup_data :]
+            {{--[: User.signup_data :]--}}
             <form name="signup_form" ng-submit="User.signup()">
                 <div class="input-group">
-                    <label>用户名:</label>
+                    <label>用户名</label>
                     <input name="username" type="text"
                            ng-minlength="4"
                            maxlength="16"
@@ -74,7 +96,7 @@
                     </div>
                 </div>
                 <div class="input-group">
-                    <label>密码:</label>
+                    <label>密码</label>
                     <input name="password" type="password"
                            ng-minlength="6"
                            required
@@ -87,7 +109,7 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit"
+                <button type="submit" class="primary"
                         ng-disabled="signup_form.$invalid">
                     注册
                 </button>

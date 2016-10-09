@@ -37,6 +37,7 @@
             function ($http, $state) {
                 var me = this;
                 me.signup_data = {};
+                me.login_data = {};
                 me.signup = function () {
                     $http.post('api/signup', me.signup_data)
                         .then(function (rs) {
@@ -60,6 +61,18 @@
                             console.log('e', e);
                         })
                 }
+                me.login = function () {
+                    $http.post('/api/login', me.login_data)
+                        .then(function (rs) {
+                            if (rs.data.status) {
+                                location.href = '/';
+                            } else {
+                                me.login_failed = true;
+                            }
+                        }, function (e) {
+
+                        })
+                }
             }])
 
         .controller('SignupController', [
@@ -76,5 +89,13 @@
                 }, true);
 
             }])
+
+        .controller('LoginController', [
+            'UserService',
+            '$scope',
+            function (UserService, $scope) {
+                $scope.User = UserService;
+            }
+        ])
 
 })();

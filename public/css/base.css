@@ -114,6 +114,15 @@ button {
     background: #ffffff;
 }
 
+button.primary {
+    background: #a10;
+    color: #fff;
+}
+
+button[disabled] {
+    background: #EEEEEE;
+    color: #aaaaaa;
+}
 input, button {
     padding: 5px;
 }
