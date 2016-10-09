@@ -95,6 +95,9 @@ Route::any('api/user/reset_password', function () {
 Route::any('api/user/validate_reset_password', function () {
     return get_user_instance()->validate_reset_password();
 });
+Route::any('api/user/exists', function () {
+    return get_user_instance()->exists();
+});
 
 //--------------问题API-------------------------------
 Route::any('api/question/add', function () {

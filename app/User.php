@@ -212,4 +212,9 @@ class User extends Model
     {
         return true;
     }
+
+    public function exists()
+    {
+        return success(['count' => $this->where(rq())->count()]);
+    }
 }
