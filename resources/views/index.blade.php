@@ -47,10 +47,30 @@
 </body>
 
 <script type="text/ng-template" id="home.tpl">
-    <div class="home container">
-        <h1>首页</h1>
-        近一个月因为忙于其他事情，一直没能抽出时间来更新项目进度。现在，只能趁着国庆期间，赶紧抽空更新下进度。这次，我想简单谈谈服务端的一些东西。
-        之前，我是没打算将服务端也列入开源名单的。但现在的想法已经改变了，我打算将整个项目都开源，不只是Android端和iOS端，也包括服务端，为一些有志于成为全栈工程师（甚至是全栈架构师）的程序猿提供一个不断进化的完整的学习项目。
+    <div class="home container card">
+        <h1>最近动态</h1>
+
+        <div class="hr"></div>
+        <div class="item-set">
+            <div class="item">
+                {{--点赞--}}
+                <div class="vote"></div>
+                <div class="item-content">
+                    <div class="content-act">XXX赞同</div>
+                    <div class="title">春雨医生张锐去世，你有什么想说的？</div>
+                    <div class="content-owner">owner test
+                        <span class="desc">descdescdesc</span>
+                    </div>
+                    <div class="content-main">
+                        文章实际上是 10 月 5 日晚发布的，原本一切正常，但在 10 月 7 日下午 16 点左右，文章莫名其妙的消失了，具体原因不详，已私信知乎小管家，目前还没有收到回复。过程详情
+                    </div>
+                </div>
+            </div>
+            <div class="action-set">
+                <div class="comment">评论</div>
+            </div>
+
+        </div>
     </div>
 </script>
 
