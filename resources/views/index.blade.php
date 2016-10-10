@@ -55,7 +55,7 @@
             <div class="item">
                 {{--点赞--}}
                 <div class="vote"></div>
-                <div class="item-content">
+                <div class="feed-item-content">
                     <div class="content-act">XXX赞同</div>
                     <div class="title">春雨医生张锐去世，你有什么想说的？</div>
                     <div class="content-owner">owner test
@@ -64,12 +64,32 @@
                     <div class="content-main">
                         文章实际上是 10 月 5 日晚发布的，原本一切正常，但在 10 月 7 日下午 16 点左右，文章莫名其妙的消失了，具体原因不详，已私信知乎小管家，目前还没有收到回复。过程详情
                     </div>
+                    <div class="action-set">
+                        <div class="comment">评论</div>
+                    </div>
+                    <div class="comment-block">
+                        <div class="hr"></div>
+                        <div class="comment-item-set">
+                            <div class="comment-item clearfix">
+                                <div class="user">liming</div>
+                                <div class="comment-content">
+                                    只能怪自己手贱升级了iOS10，于是微信聊天时候经常会出现我跟一个人斗完图之后，再次进入微信跟其他人继续聊天时，屏幕上出现的是九宫格样子，但其实手机还停留在我跟上一个人发表情的页面！！！
+                                    于是不知不觉发过去了只能怪自己手贱升级了iOS10，于是微信聊天时候经常会出现我跟一个人斗完图之后，再次进入微信跟其他人继续聊天时，屏幕上出现的是九宫格样子，但其实手机还停留在我跟上一个人发表情的页面！！！
+                                    于是不知不觉发过去了
+                                </div>
+                            </div>
+                            <div class="comment-item clearfix">
+                                <div class="user">liming</div>
+                                <div class="comment-content">
+                                    只能怪自己手贱升级了iOS10，于是微信聊天时候经常会出现我跟一个人斗完图之后，再次进入微信跟其他人继续聊天时，屏幕上出现的是九宫格样子，但其实手机还停留在我跟上一个人发表情的页面！！！
+                                    于是不知不觉发过去了只能怪自己手贱升级了iOS10，于是微信聊天时候经常会出现我跟一个人斗完图之后，再次进入微信跟其他人继续聊天时，屏幕上出现的是九宫格样子，但其实手机还停留在我跟上一个人发表情的页面！！！
+                                    于是不知不觉发过去了
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="action-set">
-                <div class="comment">评论</div>
-            </div>
-
         </div>
     </div>
 </script>

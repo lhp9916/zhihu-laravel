@@ -7,8 +7,8 @@
 
 body {
     background: #eee;
-    line-height: 1.2;
-    font-size: 14px;
+    line-height: 1.5;
+    font-size: 13px;
 }
 
 h1 {
@@ -160,25 +160,53 @@ input, button {
     color: #666;
 }
 
-.home .content-owner,
-.home .item-content .title {
+.feed-item-content .content-owner,
+.feed-item-content .title {
     color: #222;
 }
 
-.home .content-owner {
+.feed-item-content .content-owner {
     font-size: 13px;
 }
 
-.home .content-owner .desc {
+.feed-item-content .content-owner .desc {
     color: #666;
 }
 
-.home .item-content .title {
+.feed-item-content .content-main {
+    /*font-size: 14px;*/
+}
+
+.feed-item-content .title {
     font-weight: 700;
-    font-size: 16px;
+    font-size: 14px;
+}
+
+.feed-item-content .action-set {
+    color: #666;
+    font-size: 12px;
 }
 
 .content-act {
     font-size: 14px;
     color: #666;
+}
+
+.comment-item-set {
+    padding: 0 10px;
+}
+
+.comment-item {
+    padding-bottom: 10px;
+}
+
+.comment-item .user {
+    float: left;
+    width: 10%;
+    font-weight: 500;
+}
+
+.comment-item .comment-content {
+    float: right;
+    width: 90%;
 }
