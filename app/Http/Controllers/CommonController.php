@@ -14,12 +14,14 @@ class CommonController extends Controller
     {
         list($limit, $skip) = pagenate(rq('page'), rq('limit'));
         $questions = get_question_instance()
+            ->with('user')
             ->limit($limit)
             ->skip($skip)
             ->orderBy('created_at', 'desc')
             ->get();
 
         $answers = get_answer_instance()
+            ->with('user')
             ->limit($limit)
             ->skip($skip)
             ->orderBy('created_at', 'desc')
