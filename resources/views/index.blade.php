@@ -49,6 +49,7 @@
 <script type="text/ng-template" id="home.tpl">
     <div ng-controller="HomeController" class="home container card">
         <h1>最近动态</h1>
+
         <div class="hr"></div>
         <div class="item-set">
             <div ng-repeat="item in Timeline.data" class="item">
@@ -84,7 +85,8 @@
                 </div>
                 <div class="hr"></div>
             </div>
-
+            <div ng-if="Timeline.pending" class="tac">没有更多数据啦</div>
+            <div ng-if="Timeline.no_more_data" class="tac">没有更多数据啦</div>
         </div>
     </div>
 </script>

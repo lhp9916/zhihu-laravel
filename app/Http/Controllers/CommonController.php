@@ -22,6 +22,7 @@ class CommonController extends Controller
 
         $answers = get_answer_instance()
             ->with('user')
+            ->with('users')
             ->limit($limit)
             ->skip($skip)
             ->orderBy('created_at', 'desc')

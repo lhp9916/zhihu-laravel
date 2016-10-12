@@ -62,7 +62,7 @@ a {
 }
 
 .container {
-    width: 600px;
+    max-width: 600px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -71,7 +71,7 @@ a {
 .container.login,
 .container.question-add,
 .container.reset-password {
-    width: 400px;
+    max-width: 400px;
     margin-top: 15px;
 }
 
@@ -223,4 +223,8 @@ input, button {
 .comment-item .comment-content {
     float: right;
     width: 90%;
+}
+
+.tac {
+    text-align: center;
 }
