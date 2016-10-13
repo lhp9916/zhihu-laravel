@@ -5,6 +5,7 @@
         'ui.router',
         'common', //加载模块
         'question',
+        'answer',
         'user',
     ])
         .config(['$interpolateProvider',

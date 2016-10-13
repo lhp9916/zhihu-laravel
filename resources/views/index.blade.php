@@ -12,6 +12,7 @@
     <script src="/js/common.js"></script>
     <script src="/js/question.js"></script>
     <script src="/js/user.js"></script>
+    <script src="/js/answer.js"></script>
 </head>
 <body>
 <div class="navbar clearfix">

@@ -152,7 +152,7 @@ input, button {
     width: 96%;
     height: 1px;
     background: #eee;
-    margin: 10px auto;
+    margin: 10px 1%;
 }
 
 .home h1 {
@@ -195,6 +195,7 @@ input, button {
 .comment-block {
     display: none;
 }
+
 .comment-item-set {
     padding: 0 10px;
 }
@@ -227,4 +228,52 @@ input, button {
 
 .tac {
     text-align: center;
+}
+
+.feed.item .vote {
+    float: left;
+    width: 10%;
+}
+
+.feed.item .hr {
+    float: left;
+}
+
+.feed.item .vote {
+    padding-right: 5px;
+}
+
+.feed.item .vote > * {
+    background: rgba(200, 0, 0, 0.1);
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 3px;
+    margin-bottom: 2px;
+    cursor: pointer;
+    /*padding: 2px;*/
+}
+
+.feed.item .vote .up {
+    color: #6f0b00;
+    padding: 4px;
+}
+
+.feed.item .vote .up:hover {
+    color: #fff;
+    background: #a10;
+}
+
+.feed.item .vote .down {
+    background: rgba(0, 0, 0, 0.1);
+    color: #555;
+}
+
+.feed.item .vote .down:hover {
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+}
+
+.feed.item .feed-item-content {
+    width: 90%;
+    float: left;
 }

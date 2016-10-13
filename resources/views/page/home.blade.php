@@ -3,9 +3,12 @@
 
     <div class="hr"></div>
     <div class="item-set">
-        <div ng-repeat="item in Timeline.data" class="item">
+        <div ng-repeat="item in Timeline.data" class="feed item clearfix">
             {{--点赞--}}
-            <div class="vote"></div>
+            <div ng-if="item.question_id" class="vote">
+                <div class="up">赞[: item.upvote_count :]</div>
+                <div class="down">踩[: item.dowmvote_count :]</div>
+            </div>
             <div class="feed-item-content">
                 <div ng-if="item.question_id" class="content-act">[: item.user.username :]添加了回答</div>
                 <div ng-if="!item.question_id" class="content-act"> [: item.user.username :]添加了提问</div>
