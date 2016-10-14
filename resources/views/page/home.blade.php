@@ -6,8 +6,8 @@
         <div ng-repeat="item in Timeline.data" class="feed item clearfix">
             {{--点赞--}}
             <div ng-if="item.question_id" class="vote">
-                <div class="up">赞[: item.upvote_count :]</div>
-                <div class="down">踩[: item.downvote_count :]</div>
+                <div ng-click="Timeline.vote({id:item.id,vote:1})" class="up">赞[: item.upvote_count :]</div>
+                <div ng-click="Timeline.vote({id:item.id,vote:2})" class="down">踩[: item.downvote_count :]</div>
             </div>
             <div class="feed-item-content">
                 <div ng-if="item.question_id" class="content-act">[: item.user.username :]添加了回答</div>
@@ -17,7 +17,7 @@
                     <span class="desc">descdescdesc</span>
                 </div>
                 <div class="content-main">
-                    [: item.desc :]
+                    [: item.content :]
                 </div>
                 <div class="action-set">
                     <div class="comment">评论</div>

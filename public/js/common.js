@@ -36,12 +36,23 @@
                             me.pending = false;
                         })
                 }
+
+                me.vote = function (conf) {
+                    AnswerService.vote(conf)
+                        .then(function (r) {
+                            if (r) {
+                                AnswerService.update_data(conf.id);
+                            }
+                        })
+                }
             }
         ])
 
         .controller('HomeController', [
-            '$scope', 'TimelineServices',
-            function ($scope, TimelineServices) {
+            '$scope',
+            'TimelineServices',
+            'AnswerService',
+            function ($scope, TimelineServices, AnswerService) {
                 $scope.Timeline = TimelineServices;
                 TimelineServices.get();
                 var $win = $(window);
@@ -50,6 +61,22 @@
                         TimelineServices.get();
                     }
                 })
+
+                $scope.$watch(function () {
+                    return AnswerService.data;
+                }, function (new_data, old_data) {
+                    var timeline_data = TimelineServices.data;
+                    //比对新旧数据
+                    for (var k in new_data) {
+                        for (var i = 0; i < timeline_data.length; i++) {
+                            if (k == timeline_data[i].id) {
+                                timeline_data[i] = new_data[k];
+                            }
+                        }
+                    }
+                    //重新统计票数
+                    TimelineServices.data = AnswerService.count_vote(TimelineServices.data);
+                }, true)
             }
         ])
 })();

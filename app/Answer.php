@@ -67,7 +67,10 @@ class Answer extends Model
         }
         if ($id) {
             //查看某个回答
-            $answer = $this->find($id);
+            $answer = $this
+                ->with('user')
+                ->with('users')
+                ->find($id);
             if (!$answer) {
                 return ['status' => 0, 'msg' => '回答不存在'];
             }
