@@ -1,6 +1,11 @@
 ;
 (function () {
     'use strict';
+    //保存用户的Id
+    window.his = {
+        id: parseInt($('html').attr('user-id'))
+    };
+
     angular.module('zhihu', [
         'ui.router',
         'common', //加载模块

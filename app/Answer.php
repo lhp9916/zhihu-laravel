@@ -104,15 +104,22 @@ class Answer extends Model
         if (!$answer) {
             return ['status' => 0, 'msg' => '问题不存在'];
         }
-        $vote = rq('vote') <= 1 ? 1 : 2; //1-赞同 2-反对
+        //1-赞同 2-反对 3-清空
+        $vote = rq('vote');
+        if ($vote != 1 && $vote != 2 && $vote != 3) {
+            return ['status' => 0, 'msg' => '参数错误'];
+        }
 
         //检查此用户是否在相同的问题下投过票
-        $vote_ins = $answer
-            ->users()
+        $answer->users()
             ->newPivotStatement()
             ->where('user_id', session('user_id'))
             ->where('answer_id', $id)
             ->delete();
+
+        if ($vote == 3) {
+            return ['status' => 1];
+        }
 
         $answer->users()->attach(session('user_id'), ['vote' => $vote]);
         return ['status' => 1];

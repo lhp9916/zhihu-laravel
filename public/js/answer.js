@@ -18,7 +18,11 @@
                         var votes, item = answers[i];
                         item.upvote_count = 0;
                         item.downvote_count = 0;
-                        if (!item['question_id'] || !item['users']) {
+                        if (!item['question_id']) {
+                            continue;
+                        }
+                        me.data[item.id] = item;
+                        if (!item['users']) {
                             continue;
                         }
                         votes = item['users'];
@@ -40,7 +44,18 @@
                 me.vote = function (conf) {
                     if (!conf.id || !conf.vote) {
                         console.log(' id 和 vote 不存在');
+                        return;
                     }
+
+                    var answer = me.data[conf.id],
+                        users = answer.users;
+                    //判断当前用户是否已经投过相同的票，如果有，就设置vote=3 清空赞或踩
+                    for (var i = 0; i < users.length; i++) {
+                        if (users[i].id == his.id && conf.vote == users[i].pivot.vote) {
+                            conf.vote = 3;
+                        }
+                    }
+
                     return $http.post('api/answer/vote', conf)
                         .then(function (r) {
                             if (r.data.status) {
