@@ -58,13 +58,30 @@ class Answer extends Model
         return ['status' => 0, 'msg' => '数据库插入失败'];
     }
 
+    public function read_by_user_id($id)
+    {
+        $user = get_user_instance()->find($id);
+        if (!$user) {
+            return error("用户不存在");
+        }
+        $rs = $this->where('user_id', $id)->get()->keyBy('id');
+        return success($rs->toArray());
+    }
+
     public function read()
     {
         $id = rq('id');
         $question_id = rq('question_id');
-        if (!$id && !$question_id) {
+        $user_id = rq('user_id');
+        if (!$id && !$question_id && !$user_id) {
             return ['status' => 0, 'msg' => 'id或者question_id不能为空'];
         }
+
+        if ($user_id) {
+            $user_id = $user_id === 'self' ? session('user_id') : $user_id;
+            return $this->read_by_user_id($user_id);
+        }
+
         if ($id) {
             //查看某个回答
             $answer = $this
