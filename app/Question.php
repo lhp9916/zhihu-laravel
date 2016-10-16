@@ -54,6 +54,17 @@ class Question extends Model
         return ['status' => 0, 'msg' => '更新失败'];
     }
 
+    public function read_by_user_id($id)
+    {
+        $user = get_user_instance()->find($id);
+        if (!$user) {
+            return error("用户不存在");
+        }
+        $rs = $this->where('user_id', $id)->get()->keyBy('id');
+        return success($rs->toArray());
+    }
+
+
     public function read()
     {
         $id = rq('id');
@@ -64,6 +75,12 @@ class Question extends Model
             }
             return ['status' => 1, 'data' => $question];
         }
+
+        if (rq('user_id')) {
+            $user_id = rq('user_id') === 'self' ? session('user_id') : rq('user_id');
+            return $this->read_by_user_id($user_id);
+        }
+
         //批量读取
         list($limit, $skip) = pagenate(rq('page'), rq('limit'));
         $res = $this

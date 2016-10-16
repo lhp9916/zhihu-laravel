@@ -40,6 +40,9 @@ class User extends Model
         if (!$id) {
             return error('id不存在');
         }
+        if ($id === 'self') {
+            $id = session('user_id');
+        }
         $get = ['username', 'avatar_url', 'intro'];
         $user = $this->find($id, $get);
         if (!$user) {

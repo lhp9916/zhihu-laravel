@@ -75,6 +75,19 @@
 
                         })
                 }
+
+                me.read = function (params) {
+                    return $http.post('/api/answer/read', params)
+                        .then(function (r) {
+                            if (r.data.status) {
+                                me.data = angular.merge({}, me.data, r.data.data);
+                                return r.data.data;
+                            }
+                            return false;
+                        }, function () {
+
+                        })
+                }
             }
         ])
 

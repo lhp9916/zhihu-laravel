@@ -12,7 +12,10 @@ body {
 }
 
 h1 {
-    font-size: 18px;
+    font-size: 16px;
+}
+
+h1, h2 {
     margin-top: 0;
 }
 
@@ -155,9 +158,12 @@ input, button {
     margin: 10px 1%;
 }
 
-.home h1 {
-    font-size: 16px;
+h1, h2 {
     color: #666;
+}
+
+h2 {
+    font-size: 14px;
 }
 
 .feed-item-content .content-owner,
@@ -276,4 +282,18 @@ input, button {
 .feed.item .feed-item-content {
     width: 90%;
     float: left;
+}
+
+.info_item > * {
+    margin-bottom: 5px;
+}
+
+.info_item > *:first-child {
+    float: left;
+    width: 20%;
+}
+
+.info_item > *:last-child {
+    float: left;
+    width: 80%;
 }
