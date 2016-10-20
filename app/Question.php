@@ -69,7 +69,7 @@ class Question extends Model
     {
         $id = rq('id');
         if ($id) {
-            $question = $this->find($id);
+            $question = $this->with('answers')->find($id);
             if (!$question) {
                 return ['status' => 0, 'msg' => '问题不存在'];
             }
@@ -119,5 +119,10 @@ class Question extends Model
     public function user()
     {
         return $this->belongsTo('App\User');
+    }
+
+    public function answers()
+    {
+        return $this->hasMany('App\Answer');
     }
 }
