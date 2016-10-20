@@ -21,8 +21,14 @@
 
         <h2>用户回答</h2>
 
-        <div ng-repeat="(key,value) in User.his_answers">
+        <div class="feed item" ng-repeat="(key,value) in User.his_answers">
+            <div class="title">
+                [: value.question.title :]
+            </div>
             [: value.content :]
+            <div class="action-set">
+                <div class="comment">更新时间：[: value.updated_at :]</div>
+            </div>
         </div>
     </div>
 </div>

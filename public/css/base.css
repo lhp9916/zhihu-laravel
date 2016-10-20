@@ -164,6 +164,7 @@ h1, h2 {
 
 h2 {
     font-size: 14px;
+    margin-bottom: 5px;
 }
 
 .feed-item-content .content-owner,
@@ -188,7 +189,7 @@ h2 {
     font-size: 14px;
 }
 
-.feed-item-content .action-set {
+.action-set {
     color: #777;
     font-size: 12px;
 }
@@ -296,4 +297,8 @@ h2 {
 .info_item > *:last-child {
     float: left;
     width: 80%;
+}
+
+.user.container .title {
+    font-weight: 700;
 }
