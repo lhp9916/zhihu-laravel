@@ -12,6 +12,7 @@
                 var me = this;
                 me.signup_data = {};
                 me.login_data = {};
+                me.data = {};
                 me.signup = function () {
                     $http.post('api/signup', me.signup_data)
                         .then(function (rs) {
@@ -51,10 +52,11 @@
                     return $http.post('/api/user/read', param)
                         .then(function (r) {
                             if (r.data.status) {
-                                if (param.id == 'self') {
-                                    me.self_data = r.data.data;
-                                } else {
-                                    me.data[param.id] = r.data.data;
+                                me.current_user = r.data.data;
+                                me.data[param.id] = r.data.data;
+                            } else {
+                                if (r.data.msg == "请先登陆") {
+                                    $state.go('login');
                                 }
                             }
                         }, function () {

@@ -41,7 +41,12 @@ class User extends Model
             return error('id不存在');
         }
         if ($id === 'self') {
+            if (!is_logged_in()) {
+                return error('请先登陆');
+            }
             $id = session('user_id');
+        } else {
+            $id = rq('id');
         }
         $get = ['username', 'avatar_url', 'intro'];
         $user = $this->find($id, $get);

@@ -6,11 +6,11 @@
         <div class="basic">
             <div class="info_item clearfix">
                 <div>用户名</div>
-                <div>[: User.self_data.username :]</div>
+                <div>[: User.current_user.username :]</div>
             </div>
             <div class="info_item clearfix">
                 <div>简介</div>
-                <div>[: User.self_data.intro || '暂无介绍' :]</div>
+                <div>[: User.current_user.intro || '暂无介绍' :]</div>
             </div>
         </div>
         <h2>用户提问</h2>
