@@ -64,7 +64,11 @@ class Answer extends Model
         if (!$user) {
             return error("用户不存在");
         }
-        $rs = $this->where('user_id', $id)->get()->keyBy('id');
+        $rs = $this
+            ->with('question')
+            ->where('user_id', $id)
+            ->get()
+            ->keyBy('id');
         return success($rs->toArray());
     }
 
@@ -154,5 +158,10 @@ class Answer extends Model
             ->belongsToMany('App\User')
             ->withPivot('vote')
             ->withTimestamps();
+    }
+
+    public function question()
+    {
+        return $this->belongsTo('App\Question');
     }
 }
