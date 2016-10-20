@@ -9,6 +9,7 @@
             function ($http, $state) {
                 var me = this;
                 me.new_question = {};
+                me.data = {};
                 me.go_add_question = function () {
                     $state.go('question.add');
                 }
@@ -29,7 +30,11 @@
                     return $http.post('/api/question/read', params)
                         .then(function (r) {
                             if (r.data.status) {
-                                me.data = angular.merge({}, me.data, r.data.data);
+                                if (params.id) {
+                                    me.data[params.id] = me.current_question = r.data.data;
+                                } else {
+                                    me.data = angular.merge({}, me.data, r.data.data);
+                                }
                                 return r.data.data;
                             }
                             return false;

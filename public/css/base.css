@@ -31,6 +31,8 @@ a {
     float: right;
 }
 
+.container:after,
+.container:before,
 .clearfix:after,
 .clearfix:before {
     content: " ";
@@ -65,18 +67,22 @@ a {
 }
 
 .container {
-    max-width: 600px;
+    max-width: 400px;
+    margin-top: 15px;
     margin-left: auto;
     margin-right: auto;
 }
 
-.container.signup,
+.navbar .container {
+    margin: 0 auto;
+}
+
+/*.container.signup,
 .container.login,
 .container.question-add,
 .container.reset-password {
-    max-width: 400px;
     margin-top: 15px;
-}
+}*/
 
 [ui-sref] {
     cursor: pointer;
@@ -301,4 +307,12 @@ h2 {
 
 .user.container .title {
     font-weight: 700;
+}
+
+.question-detail h1 {
+    margin-bottom: 0;
+}
+
+.gray {
+    color: #999;
 }
