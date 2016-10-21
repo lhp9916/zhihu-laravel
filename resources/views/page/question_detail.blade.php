@@ -11,14 +11,24 @@
             </span>
         </div>
         <div class="hr"></div>
-        <div class="answer-block">
+        <div class="feed item clearfix">
             <di ng-repeat="item in Question.current_question.answers_with_user_info">
-                <div>
+                <div class="vote">
+                    <div ng-click="Question.vote({id:item.id,vote:1})" class="up">
+                        赞[: item.upvote_count :]
+                    </div>
+                    <div ng-click="Question.vote({id:item.id,vote:2})" class="down">
+                        踩[: item.downvote_count :]
+                    </div>
+                </div>
+                <div class="feed-item-content">
+                    <div>
                     <span ui-sref="user({id:item.user.id})">
                         [: item.user.username :]
                     </span>
+                    </div>
+                    <div>[: item.content :]</div>
                 </div>
-                <div>[: item.content :]</div>
                 <div class="hr"></div>
             </di>
         </div>

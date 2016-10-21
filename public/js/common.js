@@ -10,9 +10,10 @@
                 var me = this;
                 me.data = [];
                 me.current_page = 1;
+                me.no_more_data = false;
                 //获取首页数据
                 me.get = function (conf) {
-                    if (me.pending) return;
+                    if (me.pending || me.no_more_data) return;
                     me.pending = true;
 
                     conf = conf || {page: me.current_page};
@@ -48,6 +49,11 @@
                             }
                         })
                 }
+                me.reset_state = function () {
+                    me.data = [];
+                    me.current_page = 1;
+                    me.no_more_data = 0;
+                }
             }
         ])
 
@@ -57,8 +63,7 @@
             'AnswerService',
             function ($scope, TimelineServices, AnswerService) {
                 $scope.Timeline = TimelineServices;
-                TimelineServices.data = [];
-                TimelineServices.current_page = 1;
+                TimelineServices.reset_state();
                 TimelineServices.get();
                 var $win = $(window);
                 $win.on('scroll', function () {

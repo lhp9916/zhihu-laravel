@@ -128,6 +128,9 @@ class Question extends Model
 
     public function answers_with_user_info()
     {
-        return $this->answers()->with('user');
+        return $this
+            ->answers()
+            ->with('user')
+            ->with('users');
     }
 }

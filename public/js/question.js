@@ -6,7 +6,8 @@
         .service('QuestionService', [
             '$http',
             '$state',
-            function ($http, $state) {
+            'AnswerService',
+            function ($http, $state, AnswerService) {
                 var me = this;
                 me.new_question = {};
                 me.data = {};
@@ -29,9 +30,12 @@
                 me.read = function (params) {
                     return $http.post('/api/question/read', params)
                         .then(function (r) {
+                            var its_answers;
                             if (r.data.status) {
                                 if (params.id) {
                                     me.data[params.id] = me.current_question = r.data.data;
+                                    its_answers = me.current_question.answers_with_user_info;
+                                    its_answers = AnswerService.count_vote(its_answers);
                                 } else {
                                     me.data = angular.merge({}, me.data, r.data.data);
                                 }
