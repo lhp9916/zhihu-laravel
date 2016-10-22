@@ -5,7 +5,8 @@
 
         .service('AnswerService', [
             '$http',
-            function ($http) {
+            '$state',
+            function ($http, $state) {
                 var me = this;
                 me.data = {};
                 /**
@@ -60,8 +61,11 @@
                         .then(function (r) {
                             if (r.data.status) {
                                 return true;
+                            } else if (r.data.msg = "请先登录") {
+                                $state.go('login');
+                            } else {
+                                return false;
                             }
-                            return false;
                         }, function () {
                             return false;
                         })
