@@ -95,6 +95,7 @@ class Answer extends Model
             if (!$answer) {
                 return ['status' => 0, 'msg' => '回答不存在'];
             }
+            $answer = $this->count_vote($answer);
             return ['status' => 1, 'data' => $answer];
         }
 
@@ -109,6 +110,22 @@ class Answer extends Model
             ->get()
             ->keyBy('id');
         return ['status' => 1, 'data' => $answer];
+    }
+
+    public function count_vote($answer)
+    {
+        $upvote_count = 0;
+        $downvote_count = 0;
+        foreach ($answer->users as $user) {
+            if ($user->pivot->vote == 1) {
+                $upvote_count++;
+            } else {
+                $downvote_count++;
+            }
+        }
+        $answer->upvote_count = $upvote_count;
+        $answer->downvote_count = $downvote_count;
+        return $answer;
     }
 
     //投票
