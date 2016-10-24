@@ -32,6 +32,7 @@
                                     if (answer.id == answer_id) {
                                         //console.log(r.data.data);
                                         me.its_answers[i] = r.data.data;
+                                        AnswerService.data[answer_id] = r.data.data;
                                     }
                                 }
                             }
