@@ -313,6 +313,7 @@ h2 {
     margin-bottom: 0;
 }
 
-.gray {
+.gray,
+.gray a {
     color: #999;
 }

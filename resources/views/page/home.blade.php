@@ -30,8 +30,13 @@
                     [: item.user.username :]
                     <span class="desc">descdescdesc</span>
                 </div>
-                <div class="content-main">
+                <div ng-if="item.question_id" class="content-main">
                     [: item.content :]
+                    <div class="gray">
+                        <a ui-sref="question.detail({id:item.question_id,answer_id:item_id})">
+                            [: item.updated_at :]
+                        </a>
+                    </div>
                 </div>
                 <div class="action-set">
                     <div class="comment">评论</div>

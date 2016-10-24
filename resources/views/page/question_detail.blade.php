@@ -12,7 +12,9 @@
         </div>
         <div class="hr"></div>
         <div class="feed item clearfix">
-            <di ng-repeat="item in Question.current_question.answers_with_user_info">
+            <div
+                    ng-if="!Question.current_answer_id || Question.current_answer_id == item.id"
+                    ng-repeat="item in Question.current_question.answers_with_user_info">
                 <div class="vote">
                     <div ng-click="Question.vote({id:item.id,vote:1})" class="up">
                         赞[: item.upvote_count :]
@@ -27,10 +29,17 @@
                         [: item.user.username :]
                     </span>
                     </div>
-                    <div>[: item.content :]</div>
+                    <div>
+                        [: item.content :]
+                        <div class="gray">
+                            <a ui-sref="question.detail({id:Question.current_question.id,answer_id:item_id})">
+                                [: item.updated_at :]
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 <div class="hr"></div>
-            </di>
+            </div>
         </div>
     </div>
 </div>
